@@ -1,0 +1,22 @@
+.row{
+	margin-bottom: 2%;
+	/*background-color: green;*/
+}
+.list{
+	background-color: red;
+}
+.daily{
+	background-color: blue;
+}
+.chapter{
+	background-color: yellow;
+
+}
+.container{
+	width: 100%;
+	display: table;
+}
+
+.daily-completion{
+	background-color: green;
+}
