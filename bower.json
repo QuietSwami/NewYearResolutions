@@ -1,0 +1,23 @@
+{
+  "name": "NewYearResolutions",
+  "homepage": "https://github.com/QuietSwami/NewYearResolutions",
+  "authors": [
+    "QuietSwami <fran.abm94@gmail.com>"
+  ],
+  "description": "Simple web site to keep in track new year's resolutions",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.7",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.7"
+  }
+}
