@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var date = moment().format("DD-MMM-YYYY");
 	if(localStorage.getItem(moment().format("DD-MMM-YYYY"))){
 		var storage = localStorage.getItem(moment().format("DD-MMM-YYYY"));
 		storage = JSON.parse(storage);
@@ -25,40 +26,7 @@ $(document).ready(function(){
 		this.getDate = function(){
 			return this.Date;
 		}
-		this.flipChecked = function(){
-			if (this.checked == 0){
-				this.checked = 1;
-			}else{
-				this.checked = 0;
-			}
-		}
-		this.onChecked = function(){
-			this.checked = 1;
-		}
-		this.offChecked = function(){
-			this.checked = 0;
-		}
 	}
-
-	/*function goalOperator(goal){
-		setInterval(function(){
-				var numOfChecked = 0
-				var numOfGoals = $(".table").children('li').size();
-				$(".table").children('li').each(function(){
-					if($(this).find('input').is(':checked')){ //checks which is the input and checks if it's checked
-						numOfChecked += 1;
-						goal.onChecked();
-					}
-					else{
-						goal.offChecked();
-					}
-				});
-				console.log(goal.getId(), goal.getChecked());
-				if (numOfChecked == numOfGoals && numOfGoals > 0){
-					console.log('Felizidade');
-				}
-			}, 1000);
-	}*/
 
 	function store(goal){
 		var date = moment().format("DD-MMM-YYYY");
@@ -74,18 +42,30 @@ $(document).ready(function(){
 		}
 	}
 
-	$(".remove").click(function(){
-		$(this).parent().remove();
+	$("input:checkbox").click(function(){
+		var inputClass = $(this).attr("class");
+		var storage = JSON.parse(localStorage.getItem(date));
+		for (var i = 0; i < storage.length; i++){
+			if (storage[i].id == inputClass){
+				if(storage[i].check == 1){
+					storage[i].check = 0;
+				}
+				else{
+					storage[i].check = 1
+				}
+			}
+		}
+		localStorage.setItem(date, JSON.stringify(storage));
+		console.log(localStorage.getItem(date));
 	});
-	
+
 	$("#goal").click(function(){
 		if ($(".goalText").val()){
 			var newGoal = new Goal($(".goalText").val());
-			$(".table").append("<li class='"+newGoal.getId()+"'>"+newGoal.getText()+ "<input type='checkbox' class='"+newGoal.getId()+"'> <a class='remove'>remove</a>");
+			$(".table").append("<li class='"+newGoal.getId()+"'>"+newGoal.getText()+ "<input type='checkbox' class='"+newGoal.getId()+"'>");
 			//still missing a X image
 			store(newGoal);
 			$(".goalText").val("");
-			//goalOperator(newGoal);
 		}
 		else{
 			alert("Text Box empty");
