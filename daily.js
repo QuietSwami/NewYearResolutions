@@ -49,7 +49,7 @@ $(document).ready(function(){
 		}
 	}
 
-	$("input:checkbox").click(function(){
+	$(".daily input:checkbox").click(function(){
 		var inputClass = $(this).attr("class");
 		var storage = JSON.parse(localStorage.getItem(date));
 		for (var i = 0; i < storage.length; i++){
@@ -63,7 +63,6 @@ $(document).ready(function(){
 			}
 		}
 		localStorage.setItem(date, JSON.stringify(storage));
-		console.log(localStorage.getItem(date));
 		if (!$(this).is("checked")){ //when pressed, the checkbox is "unchecked"
 			goalNumb += 1;
 			if (goalNumb == $(".table li").length){
