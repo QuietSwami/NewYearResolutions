@@ -1,11 +1,18 @@
 $(document).ready(function(){
+	var goalNumb = 0;
 	var date = moment().format("DD-MMM-YYYY");
 	if(localStorage.getItem(moment().format("DD-MMM-YYYY"))){
 		var storage = localStorage.getItem(moment().format("DD-MMM-YYYY"));
 		storage = JSON.parse(storage);
 		for (var i = 0; i < storage.length; i ++){
 			var single = storage[i];
-			$(".table").append("<li class='"+single.id+"'>"+single.text+ "<input type='checkbox' class='"+single.id+"'> <a class='remove'>remove</a>");
+			if (single.check == 1){
+				goalNumb += 1;
+				$(".table").append("<li class='"+single.id+"'>"+single.text+ "<input type='checkbox' checked='checked' class='"+single.id+"'> <a class='remove'>remove</a>");
+			}
+			else{
+				$(".table").append("<li class='"+single.id+"'>"+single.text+ "<input type='checkbox' class='"+single.id+"'> <a class='remove'>remove</a>");
+			}
 		}
 	}
 
@@ -57,7 +64,17 @@ $(document).ready(function(){
 		}
 		localStorage.setItem(date, JSON.stringify(storage));
 		console.log(localStorage.getItem(date));
+		if (!$(this).is("checked")){ //when pressed, the checkbox is "unchecked"
+			goalNumb += 1;
+			if (goalNumb == $(".table li").length){
+				alert("swagadon"); //change this
+			}
+		}
+		else{
+			goalNumb -= 1;
+		}
 	});
+
 
 	$("#goal").click(function(){
 		if ($(".goalText").val()){
