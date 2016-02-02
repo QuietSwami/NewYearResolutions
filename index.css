@@ -17,6 +17,9 @@
 	display: table;
 }
 
+.book{
+	background-color: #1BD4F5;
+}
 .daily-completion{
 	background-color: green;
 }
