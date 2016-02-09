@@ -60,7 +60,8 @@
 		</div>
 		<div class="col-md-4">
 			<div class="book">
-				Currently Reading: <span class="currentBook"></span><br>
+				Currently Reading: <span class="currentBook"></span><span id="newBook" class="glyphicon glyphicon-plus-sign"></span><br>
+				<span class="page">Current Page:</span><input class="currentPage" type="number"> or <a class="finished">I'm finished</a><br>
 				Already Read:
 				<ul class="bookList"></ul>
 			</div>
@@ -70,5 +71,12 @@
 		</div>
 	</div>
 </div>
+
+<div id="light" class="white_content">
+	<h3>Title</h3><input class="title" type="text">
+	<h3>Number of Pages</h3><input class="pages" type="number" min="0">
+	<a class="close">Close</a>
+</div>
+    <div id="fade" class="black_overlay"></div>
 </body>
 </html>
