@@ -1,14 +1,15 @@
 $(document).ready(function() {
 
 	var noBook = 'Not reading any book at the moment';
-	if (localStorage.getItem("currentBook") != ""){
+
+	if (localStorage.getItem("currentBook") != "" && localStorage.getItem("currentBook")){
 		$(".currentBook").append(localStorage.getItem("currentBook"));
 		$("#newBook").css('visibility', 'hidden');
-		$(".currentPage").val(localStorage.getItem("currentPage"));
+		$(".currentPage").val(parseInt(localStorage.getItem("currentPage")));
 	}
 	else{
 		$(".currentBook").append(noBook);
-		$("")
+		$(".page").css('visibility', 'hidden');
 	}
 
 	if (localStorage.getItem("bookList")){
@@ -18,6 +19,20 @@ $(document).ready(function() {
 		}
 	}
 
+	setInterval(function(){
+		if ($(".currentPage").val() == localStorage.getItem("currentPage")){
+			$(".pageSet").css('pointer-events', 'none');
+		}
+		else{
+			$(".pageSet").css('pointer-events', 'auto');
+			$(".pageSet").click(function(){
+				localStorage.setItem("currentPage", parseString($(".pageSet").val())); // missing string parser
+			});
+		}
+	},1000);
+
+	$()
+
 	$("#newBook").click(function(){
 		$(".currentBook").empty();
 		$(".white_content").css("display", "block");
@@ -25,8 +40,19 @@ $(document).ready(function() {
 	});
 
 	$(".finished").click(function(event) {
+		var book = localStorage.getItem("currentBook");
+		if (! localStorage.getItem("bookList")){
+			var storage = [];
+			localStorage.setItem("bookList", JSON.stringify(storage));
+		}
+		var storage = JSON.parse(localStorage.getItem("bookList"));
+		storage.push(book);
+		localStorage.setItem("bookList", JSON.stringify(storage));
 		localStorage.setItem("currentBook", "");
+		localStorage.setItem("currentPage", 0);
+		location.reload();
 	});
+
 	$(".close").click(function(event) {
 		var title = $(".title").val();
 		var numOfPages = $(".pages").val();
@@ -36,6 +62,8 @@ $(document).ready(function() {
 		localStorage.setItem("currentBook", title);
 		localStorage.setItem("currentPage", 0);
 		$("#newBook").css('visibility', 'hidden');
+		$(".page").css('visibility', 'visible');
+		$(".currentPage").val(0);
 		$(".white_content").css("display", "none");
 		$(".black_overlay").css("display", "none");
 	});
