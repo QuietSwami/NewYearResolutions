@@ -5,7 +5,8 @@ $(document).ready(function() {
 	if (localStorage.getItem("currentBook") != "" && localStorage.getItem("currentBook")){
 		$(".currentBook").append(localStorage.getItem("currentBook"));
 		$("#newBook").css('visibility', 'hidden');
-		$(".currentPage").val(parseInt(localStorage.getItem("currentPage")));
+		$(".currentPage").val(JSON.parse(localStorage.getItem("currentPage")));
+		$(".currentPage").attr("max", localStorage.getItem("numOfPages"));
 	}
 	else{
 		$(".currentBook").append(noBook);
@@ -25,13 +26,17 @@ $(document).ready(function() {
 		}
 		else{
 			$(".pageSet").css('pointer-events', 'auto');
-			$(".pageSet").click(function(){
-				localStorage.setItem("currentPage", parseString($(".pageSet").val())); // missing string parser
-			});
 		}
 	},1000);
 
-	$()
+	$(".pageSet").click(function(){
+		if ($(".currentPage").val() <= localStorage.getItem("numOfPages")){
+			localStorage.setItem("currentPage", JSON.stringify($(".currentPage").val())); // missing string parser
+		}
+		else{
+			console.log();
+		}
+	});
 
 	$("#newBook").click(function(){
 		$(".currentBook").empty();
@@ -60,10 +65,11 @@ $(document).ready(function() {
 		$(".title").val("");
 		$(".currentBook").append(title);
 		localStorage.setItem("currentBook", title);
+		localStorage.setItem("numOfPages", numOfPages);
 		localStorage.setItem("currentPage", 0);
 		$("#newBook").css('visibility', 'hidden');
 		$(".page").css('visibility', 'visible');
-		$(".currentPage").val(0);
+		$(".currentPage").val(0).attr("max", localStorage.getItem("numOfPages"));
 		$(".white_content").css("display", "none");
 		$(".black_overlay").css("display", "none");
 	});
