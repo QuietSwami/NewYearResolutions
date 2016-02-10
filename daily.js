@@ -15,6 +15,26 @@ $(document).ready(function(){
 			}
 		}
 	}
+	else{
+		var yesterday = moment().add(-1, "date");
+		if (!localStorage.getItem("total") && !localStorage.getItem("done")){
+			localStorage.setItem("total", 0);
+			localStorage.setItem("done", 0);		
+		}
+		if (localStorage.getItem(yesterday)){
+			var storage = JSON.parse(localStorage.getItem(yesterday));
+			var total;
+			var done;
+			for (var i = 0; i < storage.length; i ++){
+				total ++;
+				if (storage[i].check == 1){
+					done ++;
+				}
+			}
+			localStorage.setItem("total", total);
+			localStorage.setItem("done", done);
+		}
+	}
 
 	function Goal(text){
 		this.id = String(Math.random().toString(36).substring(7));
@@ -66,7 +86,7 @@ $(document).ready(function(){
 		if (!$(this).is("checked")){ //when pressed, the checkbox is "unchecked"
 			goalNumb += 1;
 			if (goalNumb == $(".table li").length){
-				alert("swagadon"); //change this
+				alert("swagadon"); //TODO: change this
 			}
 		}
 		else{

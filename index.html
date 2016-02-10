@@ -13,16 +13,18 @@
 	<script type="text/javascript" src="year.js"></script>
 	<script type="text/javascript" src="chapter.js"></script>
 	<script type="text/javascript" src="book.js"></script>
+	<script type="text/javascript" src="chart.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-      	<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-      </a>
-
-      <span class="day">DIA</span>
+      <span class="day"></span>
+      <script>
+      $(document).ready(function() {
+      	$(".day").append(moment().format("DD-MMM-YYYY"));	
+      });
+      </script>
     </div>
   </div>
 </nav>
@@ -57,7 +59,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="daily-completion">yoloo</div>
+			<div id="daily-completion"></div>
 		</div>
 		<div class="col-md-4">
 			<div class="book">
@@ -68,7 +70,7 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="daily-completion">yoloo</div>
+			<div id="chapter-completion">yoloo</div>
 		</div>
 	</div>
 </div>
