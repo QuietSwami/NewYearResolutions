@@ -2,20 +2,34 @@
 	margin-bottom: 2%;
 	/*background-color: green;*/
 }
-.list{
-	background-color: red;
-}
-.daily{
-	background-color: blue;
-}
-.chapter{
-	background-color: yellow;
 
-}
 .container{
 	width: 100%;
 	display: table;
 }
+
+.container-fluid{
+	margin-left: 45%;
+}
+
+.navbar-default {
+	background-color: #2F83EF;
+	border-color: #2F83EF;
+	border-radius: 0;
+	-webkit-box-shadow: 0px 6px 3px 0px rgba(115,111,115,0.65);
+	-moz-box-shadow: 0px 6px 3px 0px rgba(115,111,115,0.65);
+	box-shadow: 0px 6px 3px 0px rgba(115,111,115,0.65);
+}
+.navbar-header{
+	margin-top: 1%;
+}
+
+.day{
+	color: #ffffff;
+	font-size: 15pt;
+	font-weight: bold;
+}
+
 
 .black_overlay{
     display: none;
@@ -44,16 +58,15 @@
     overflow: auto;
 }
 
-.popUp{
-	background-color: black;
-	width: 25%;
-	height: 25%;
-	margin-left: 25%;
-	margin-top: 25%;
+.col-md-4{
+	width: 28%;
+	margin-left:2.5%;
+	margin-right:2.5%;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(115,111,115,0.65);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(115,111,115,0.65);
+	box-shadow: 0px 2px 3px 0px rgba(115,111,115,0.65);
 }
-.book{
-	background-color: #1BD4F5;
-}
-.daily-completion{
-	background-color: green;
+
+.list, .daily, .chapter, #daily-completion, .book, #chapter-completion{
+	height: 300px;
 }

@@ -5,19 +5,21 @@ $(document).ready(function() {
 	
 	function drawChart() {
 
-	    var total = localStorage.getItem("total");
-	    var done = localStorage.getItem("done");
+	    var total = parseInt(localStorage.getItem("total"));
+	    var done = parseInt(localStorage.getItem("done"));
 	    console.log(total, done);
+	    var uncompleted = total - done;
+
 		var data = new google.visualization.DataTable();
 	    data.addColumn('string', 'Completed');
 	    data.addColumn('number', 'Uncompleted');
 	    data.addRows([
-	      ["Total", total],
+	      ["Uncompleted", uncompleted],
 	      ["Done", done]
 	    ]);
 
 	    var options = {'title':'Daily Goal Completion',
-                       'width':400,
+                       'width':300,
                        'height':300};
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById("daily-completion"));
@@ -37,7 +39,7 @@ $(document).ready(function() {
 	    ]);
 
 	    var options = {'title':'Daily Goal Completion',
-                       'width':400,
+                       'width':300,
                        'height':300};
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById("chapter-completion"));
