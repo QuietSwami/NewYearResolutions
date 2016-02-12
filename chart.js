@@ -38,7 +38,7 @@ $(document).ready(function() {
 	      ["Done", chapter]
 	    ]);
 
-	    var options = {'title':'Daily Goal Completion',
+	    var options = {'title':'Daily Chapter Completion',
                        'width':300,
                        'height':300};
         // Instantiate and draw our chart, passing in some options.

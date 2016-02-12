@@ -30,6 +30,40 @@
 	font-weight: bold;
 }
 
+input{
+	margin-left: 2%;
+	margin-right: 2%;
+
+}
+
+input[type="checkbox"]{
+	margin-left: 2%;
+	margin-right: 2%;
+	
+}
+
+input[type="text"]{
+	width: 150px;
+}
+
+input[type="number"]{
+	width: 60px;
+}
+
+.title{
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+ul{
+	list-style: none;
+}
+
+li{
+	margin-top: 1%;
+	margin-bottom: 1%;
+
+}
 
 .black_overlay{
     display: none;

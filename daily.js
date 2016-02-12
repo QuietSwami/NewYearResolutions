@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var goalNumb = 0;
+
 	var date = moment().format("DD-MMM-YYYY");
 	if(localStorage.getItem(moment().format("DD-MMM-YYYY"))){ // if it's the same day
 		var storage = localStorage.getItem(moment().format("DD-MMM-YYYY"));
@@ -16,7 +17,7 @@ $(document).ready(function(){
 		}
 	}
 	else{ // if it's a new day
-		var yesterday = moment().add(-1, "date");
+		var yesterday = moment().add(-1, "days").format("DD-MMM-YYYY");
 		if (!localStorage.getItem("total") && !localStorage.getItem("done")){
 			localStorage.setItem("total", 0);
 			localStorage.setItem("done", 0);		
